@@ -39,7 +39,6 @@ public class BOJ_2178 {
 					// 우     하     좌     상  
 	static int dx[] = {1, 0, -1, 0};
 	static int dy[] = {0, 1, 0, -1};
-	static int cnt;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -59,15 +58,8 @@ public class BOJ_2178 {
 			}
 		}
 		
-		cnt=0;
 		bfs(0, 0);
-/*		for(int i=0; i<N; i++) {
-			for(int j=0; j<M; j++) {
-				System.out.print(visited[i][j]);
-			}
-			System.out.println();
-		}*/
-		//System.out.println(cnt);
+		System.out.println(map[N-1][M-1]);
 		
 	}
 	
@@ -76,22 +68,20 @@ public class BOJ_2178 {
 		//Create queue
 		queue = new LinkedList<>();
 		
-		//첫 정점 i의 y좌표, x좌표
-		int iy=i; int ix=j;
-		int tmp[]= {iy, ix};
+		//첫 정점 y좌표, x좌표
+		int tmp[]= {i, i};
 		
 		//첫 정점 enQueue, visited표시
 		queue.add(tmp);
-		visited[iy][ix] = 1;
-		cnt++;
+		visited[i][j] = 1;
 		
-		//System.out.println(tmp[0]+" "+tmp[1]);
 		
 		//정점v 의 y좌표, x좌표 
 		int vy; int vx;
-		
+
 		//queue 비어있지 않은 동안
 		while(!queue.isEmpty()) {
+			
 			//queue의 첫 원소 뺌
 			int tmp1[] = queue.remove();
 			vy=tmp1[0];
@@ -100,54 +90,34 @@ public class BOJ_2178 {
 			int ny; int nx;
 			//v의 이웃정점 정점n 탐색
 			for(int index=0; index<4; index++) {
-				
+
 				//정점n
 				ny = vy+dy[index];
 				nx = vx+dx[index];
 				
 				//map[N][X] 범위 넘지 않도록 (범위 넘으면 continue)
 				if(ny<0 || nx<0 || ny==N || nx==M) {
-					//cnt--;
 					continue;
 				}
-				
 				
 				//정점n이 not visited이고, 길(1)이면 enQueue, visited표시
 				if(visited[ny][nx]==0 && map[ny][nx]==1) {
 					int tmp2[] = {ny, nx};
 					queue.add(tmp2);
 					visited[ny][nx]=1;
-					cnt++;
-					
-					//테스트
-					for(int ii=0; ii<N; ii++) {
-						for(int jj=0; jj<M; jj++) {
-							System.out.print(visited[ii][jj]);
-						}
-						System.out.println();
-					}
-					System.out.println();
-					
-					//찾는 정점이면 리턴
+					map[ny][nx] = map[vy][vx]+1;
+					/*//찾는 정점이면 리턴
 					if(ny==N-1 && nx==M-1) {
 						return;
-					}
+					}*/
 				
 				}
 				
 			}
 			
-			
-			
 		}
 		
-		
-		
 	}
-	
-	
-	
-	
 	
 
 }
