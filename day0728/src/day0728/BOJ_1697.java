@@ -3,16 +3,18 @@ package day0728;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
-/*
-1. 일단 두배로 가다가 동생범위 넘으면, 
-2. 그전단계로 돌아와서 뒤로걷기(-1),
-1~2 무한반복
-*/
-
 public class BOJ_1697 {
+	static Queue<Integer> queue;
+	static int dx[] = {-1, 1, 2};
+	static int result;
+	
 	public static void main(String[] args) throws IOException {
+		long start = System.currentTimeMillis();
+
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
@@ -22,29 +24,57 @@ public class BOJ_1697 {
 			N = Integer.parseInt(st.nextToken());
 			K = Integer.parseInt(st.nextToken());
 		}
+		result=1;
+		find(N, K);
 		
-		recursive(N, K);
-		
+		System.out.println(result);
+		long end = System.currentTimeMillis();
+
+		System.out.println( "실행 시간 : " + ( end - start )/1000.0 );
+
+
+
 	}
 	
-	public static void recursive(int N, int K) {
+	public static void find(int N, int K) {
+		queue = new LinkedList<>();
 		
-		System.out.println(N+" "+K);
+		//초기 수빈이 위치
+		queue.add(N);
 		
-		if(N>K) {
-			N=N/2;
-			N=N-1;
+		while(!queue.isEmpty()) {
+			
+			int qsize = queue.size(); 
+			for(int j=0; j<qsize; j++) {
+
+				int v = queue.remove();
+				
+				int nv;
+				for(int i=0; i<3; i++) {
+					
+					//다음 수빈이의 위치
+					if(i==2) {
+						nv = 2*v;
+					}else {
+						nv = v + dx[i];	
+					}
+					
+					if(nv==K) {
+						//System.out.println(nv);
+						return;
+					}
+					
+					
+					queue.add(nv);
+					
+				}
+				
+			}
+			//System.out.println(queue);
+			result++;
+			
 		}
 		
-		recursive(2*N, K);
-				
-		
-	
-		
-		
-		
-		
 	}
-	
 	
 }
