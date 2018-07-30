@@ -105,7 +105,10 @@ public class BOJ_2178 {
 					int tmp2[] = {ny, nx};
 					queue.add(tmp2);
 					visited[ny][nx]=1;
+					
+					
 					map[ny][nx] = map[vy][vx]+1;
+					
 					/*//찾는 정점이면 리턴
 					if(ny==N-1 && nx==M-1) {
 						return;
