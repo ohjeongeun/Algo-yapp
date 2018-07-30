@@ -43,14 +43,18 @@ public class BOJ_2178 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
+		//N, M값 받음
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		while(st.hasMoreTokens()) {
 			N = Integer.parseInt(st.nextToken()); //세로
 			M = Integer.parseInt(st.nextToken()); //가로
 		}
 		
+		//배열 생성 및 초기화
 		map = new int[N][M];
 		visited = new int[N][M];
+		
+		//미로 배열에 input data 삽입
 		for(int i=0; i<N; i++) {
 			String s = br.readLine();
 			for(int j=0; j<M; j++) {
@@ -58,6 +62,7 @@ public class BOJ_2178 {
 			}
 		}
 		
+		//미로 시작점 0,0
 		bfs(0, 0);
 		System.out.println(map[N-1][M-1]);
 		
@@ -82,20 +87,20 @@ public class BOJ_2178 {
 		//queue 비어있지 않은 동안
 		while(!queue.isEmpty()) {
 			
-			//queue의 첫 원소 뺌
+			//queue의 첫 원소빼서 정점v에 저장
 			int tmp1[] = queue.remove();
 			vy=tmp1[0];
 			vx=tmp1[1];
 			
 			int ny; int nx;
 			//v의 이웃정점 정점n 탐색
-			for(int index=0; index<4; index++) {
+			for(int index=0; index<4; index++) {//우 하 좌 상 순으로 이웃 탐색
 
 				//정점n
 				ny = vy+dy[index];
 				nx = vx+dx[index];
 				
-				//map[N][X] 범위 넘지 않도록 (범위 넘으면 continue)
+				//미로 배열 범위 넘지 않도록 (범위 넘으면 continue)
 				if(ny<0 || nx<0 || ny==N || nx==M) {
 					continue;
 				}
@@ -106,13 +111,13 @@ public class BOJ_2178 {
 					queue.add(tmp2);
 					visited[ny][nx]=1;
 					
-					
+					//전 정점인 v에 +1을 더해주므로써 => map배열의 depth 표현
 					map[ny][nx] = map[vy][vx]+1;
 					
-					/*//찾는 정점이면 리턴
+					//찾는 정점이면 리턴
 					if(ny==N-1 && nx==M-1) {
 						return;
-					}*/
+					}
 				
 				}
 				
