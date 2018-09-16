@@ -30,10 +30,6 @@ public class BOJ_1463 {
 			
 		}
 		
-		for(int i=0; i<=X; i++) {
-			System.out.print(memo[i]+" ");
-		}
-		System.out.println();
 		System.out.println(memo[X]);
 	}
 
