@@ -3,19 +3,24 @@ package day0916;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class BOJ_1167 {
+public class BOJ_1167_1 {
 	static int V;
-	static int adj[][];
+	static ArrayList<Node> adj[];
 	static int visited[];
 	static int result;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		V = Integer.parseInt(br.readLine());
 		
-		adj = new int[V+1][V+1];
+		adj = new ArrayList[V+1];
 		visited = new int[V+1];
+		
+		for(int i=0; i<V+1; i++) {
+			adj[i] = new ArrayList<Node>();
+		}
 		
 		for(int i=1; i<=V; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
@@ -25,28 +30,40 @@ public class BOJ_1167 {
 				int c = Integer.parseInt(st.nextToken());
 				if(c==-1) break;
 				int len = Integer.parseInt(st.nextToken());
-				adj[p][c]=len;
+				adj[p].add(new Node(c, len));
 			}
 		}
-		result=0;
-		dfs(1, 0);
-		System.out.println(result);
 		
+		/*for(int i=1; i<=V; i++) {
+			for(int j=0; j<adj[i].size(); j++) {
+				System.out.print(adj[i].get(j).n+" "+adj[i].get(j).len);
+			}
+			System.out.println();
+		}*/
+		
+		for(int i=1; i<=V; i++) {
+			dfs(i);
+		}
+		
+		br.close();
 	}
 	
-	public static void dfs(int cur, int sum) {
-		if(cur==V) return;
-		result = Math.max(result, sum);
-		
-		for(int j=1; j<=V; j++) {
+	public static void dfs(int cur) {
+		for(int j=0; j<adj[cur].size(); j++) {
+			//cur과 cur의 이웃점들 거리 비교
 			
-			if(visited[j]==0 && adj[cur][j]!=0) {
-				visited[j]=1;
-				dfs(j, sum += adj[cur][j]);
-				visited[j]=0;
-			}
 		}
-		
 	}
 
+}
+
+class Node {
+	int n;
+	int len;
+	
+	Node(int n, int len) {
+		this.n = n;
+		this.len = len;
+	}
+	
 }
