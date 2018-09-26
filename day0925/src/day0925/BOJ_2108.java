@@ -16,21 +16,19 @@ public class BOJ_2108 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
 		
+		//산술평균, 중앙값, 범위 구하기 위한 배열
 		arr = new int[N];
+		
+		//최빈값 구하기 위한 배열. 
 		arr2 = new int[8002];
 		for(int i=0; i<N; i++) {
 			int token = Integer.parseInt(br.readLine());
 			
-			if(token<0) {
-				// -4000  -1 => 1 ~ 4000
-				int nToken = token+4001;
-				arr2[nToken]++;
-			
-				// 0=> 4001 , 1 ~ 4000 => 4002 ~ 8001
-			}else {
-				int nToken = token+4001;
-				arr2[nToken]++;
-			}
+			// 음수는 index 처리 할 수 없으니 
+			// -4000  -1 => 1 ~ 4000
+			// 0=> 4001 , 1 ~ 4000 => 4002 ~ 8001
+			int nToken = token+4001;
+			arr2[nToken]++;
 			
 			arr[i]=token;
 			
@@ -48,16 +46,15 @@ public class BOJ_2108 {
 		//중앙값
 		Arrays.sort(arr);
 		System.out.println(arr[N/2]);
+
 		
+		//최빈값
 		ArrayList<Integer> list = new ArrayList<>();
 		int max=0;
-		int index=0;
-		//최빈값
 		for(int i=arr2.length-1; i>=1; i--) {
 			//큰놈 찾음
 			if(max<arr2[i]) {
 				max = arr2[i];
-				index = i;
 			}
 		}	
 		
@@ -67,10 +64,8 @@ public class BOJ_2108 {
 			}
 		}
 			
-		//System.out.println(list);
 		Collections.sort(list);
-		//System.out.println(list);
-			
+
 		if(list.size()>1) {
 			System.out.println(list.get(1));
 		}else {
@@ -79,7 +74,6 @@ public class BOJ_2108 {
 		
 		//범위
 		System.out.println(arr[N-1]-arr[0]);
-		
 
 	}
 }
