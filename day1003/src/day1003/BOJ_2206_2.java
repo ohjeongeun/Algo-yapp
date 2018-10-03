@@ -1,4 +1,4 @@
-package day1003;
+/*package day1003;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,12 +41,12 @@ public class BOJ_2206_2 {
 			}
 		}
 		
-		/*for(int i=0; i<N; i++) {
+		for(int i=0; i<N; i++) {
 			for(int j=0; j<M; j++) {
 				System.out.print(map[i][j]);
 			}
 			System.out.println();
-		}*/
+		}
 
 		q = new LinkedList<>();
 
@@ -58,13 +58,13 @@ public class BOJ_2206_2 {
 			
 			map[y][x]=0;
 			bfs(0,0);
-			/*for(int k=0; k<N; k++) {
+			for(int k=0; k<N; k++) {
 				for(int j=0; j<M; j++) {
 					System.out.print(visited[k][j]);
 				}
 				System.out.println();
 			}
-			System.out.println();*/
+			System.out.println();
 			if(visited[N-1][M-1]!=0 && visited[N-1][M-1]<min) {
 				min = visited[N-1][M-1];
 			}
@@ -124,3 +124,4 @@ class Node {
 	}
 	
 }
+*/
