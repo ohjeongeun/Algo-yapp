@@ -23,6 +23,8 @@ public class BOJ_11279_1 {
 				
 				if(o1<o2) {
 					result = 1; //내림차순
+				}else {
+					result = -1;
 				}
 				
 				return result;
