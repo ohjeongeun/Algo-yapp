@@ -33,13 +33,6 @@ public class BOJ_2206_3 {
 			}
 		}
 		
-		/*for(int i=0; i<N; i++) {
-			for(int j=0; j<M; j++) {
-				System.out.print(map[i][j]);
-			}
-			System.out.println();
-		}*/
-
 		q = new LinkedList<>();
 
 		
@@ -82,7 +75,6 @@ public class BOJ_2206_3 {
 		q.add(new Node(y, x, 0));
 
 		visited[y][x][0]=1;
-		//visited[y][x][1]=1;
 		
 		while(!q.isEmpty()) {
 			int cury = q.peek().y;
