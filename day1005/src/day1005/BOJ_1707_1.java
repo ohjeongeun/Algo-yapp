@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_1707 {
+public class BOJ_1707_1 {
 	static int adj[][];
 	static int visited[];
 	static int V;
@@ -30,12 +30,12 @@ public class BOJ_1707 {
 			}
 			
 			
-			for(int i=1; i<=V; i++) {
+			/*for(int i=1; i<=V; i++) {
 				for(int j=1; j<=V; j++) {
 					System.out.print(adj[i][j]);
 				}	
 				System.out.println();
-			}
+			}*/
 			
 			flag=true;
 			dfs(1);
