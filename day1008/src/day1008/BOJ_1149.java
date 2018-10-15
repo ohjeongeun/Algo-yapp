@@ -32,12 +32,12 @@ public class BOJ_1149 {
 			
 		}
 		
-		/*for(int i=0; i<=N; i++) {
+		for(int i=0; i<=N; i++) {
 			for(int j=0; j<3; j++) {
 				System.out.print(memo[i][j]+" ");
 			}
 			System.out.println();
-		}*/
+		}
 		
 		System.out.println(Math.min(Math.min(memo[N][0], memo[N][1]), memo[N][2]));
 		

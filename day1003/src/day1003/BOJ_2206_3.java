@@ -37,13 +37,18 @@ public class BOJ_2206_3 {
 
 		
 		bfs(0, 0);
+		
+		//Ãâ·ÂTEST
+		
 		for(int i=0; i<N; i++) {
 			for(int j=0; j<M; j++) {
 				System.out.print(visited[i][j][0]+" ");
 			}
 			System.out.println();
 		}
-		System.err.println();
+		System.out.println();
+		System.out.println();
+		
 		for(int i=0; i<N; i++) {
 			for(int j=0; j<M; j++) {
 				System.out.print(visited[i][j][1]+" ");
@@ -52,6 +57,7 @@ public class BOJ_2206_3 {
 		}
 		System.out.println(visited[N-1][M-1][0]);
 		System.out.println(visited[N-1][M-1][1]);	
+		
 		
 		int a = visited[N-1][M-1][0];
 		int b = visited[N-1][M-1][1];
