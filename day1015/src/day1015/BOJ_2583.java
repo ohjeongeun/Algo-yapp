@@ -10,8 +10,8 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class BOJ_2583 {
-	static int M;
-	static int N; 
+	static int M; //세로
+	static int N; //가로
 	static int K;
 	static int map[][];
 	static int visited[][];
@@ -52,6 +52,7 @@ public class BOJ_2583 {
 				
 		}
 		
+		//출력Test
 		/*for(int i=0; i<M; i++) {
 			for(int j=0; j<N; j++) {
 				System.out.print(map[i][j]);

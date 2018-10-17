@@ -56,12 +56,12 @@ public class BOJ_1932 {
 		}
 		
 		//출력Test
-		for(int i=1; i<=n; i++) {
+		/*for(int i=1; i<=n; i++) {
 			for(int j=1; j<=n; j++) {
 				System.out.print(memo[i][j]+" ");
 			}
 			System.out.println();
-		}
+		}*/
 		
 		//2차원 배열 n행 오름차순 정렬
 		Arrays.sort(memo[n]);
